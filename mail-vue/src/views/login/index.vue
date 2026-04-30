@@ -1,5 +1,5 @@
 <template>
-  <div id="login-box" :style=" background ? 'background: var(--el-bg-color)' : ''" v-loading="oauthLoading" element-loading-text="登录中...">
+  <div id="login-box" :style=" background ? 'background: var(--el-bg-color)' : ''" v-loading="oauthLoading" element-loading-text="Login...">
     <div id="background-wrap" v-if="!settingStore.settings.background">
       <div class="x1 cloud"></div>
       <div class="x2 cloud"></div>
@@ -43,9 +43,6 @@
           </el-input>
           <el-button class="btn" type="primary" @click="submit" :loading="loginLoading"
           >{{ $t('loginBtn') }}
-          </el-button>
-          <el-button class="btn" v-if="settingStore.settings.linuxdoSwitch"  style="margin-top: 10px"  @click="linuxDoLogin">
-            <el-avatar src="/image/linuxdo.webp" :size="18" style="margin-right: 10px" />LinuxDo
           </el-button>
         </div>
         <div v-show="show !== 'login'">
@@ -106,7 +103,7 @@
         </template>
       </div>
     </div>
-    <el-dialog class="bind-dialog" v-model="showBindForm"  title="注册邮箱" >
+    <el-dialog class="bind-dialog" v-model="showBindForm" >
       <div class="bind-container">
         <el-input v-model="bindForm.email" type="text" :placeholder="$t('emailAccount')" autocomplete="off">
           <template #append>
@@ -136,13 +133,10 @@
         <el-input v-if="settingStore.settings.regKey === 2" v-model="bindForm.code"
                   :placeholder="$t('regKeyOptional')" type="text" autocomplete="off"/>
         <el-button class="btn" type="primary" @click="bind" :loading="bindLoading"
-        >绑定
+        >Bind
         </el-button>
       </div>
     </el-dialog>
-    <a v-show="settingStore.settings.projectLink" class="github" href="https://github.com/maillab/cloud-mail">
-      <Icon icon="mingcute:github-line" color="#1890ff" width="20" height="20" />
-    </a>
   </div>
 </template>
 
